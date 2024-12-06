@@ -27,7 +27,6 @@ pub fn run() -> (i32, i32) {
 
     let mut sum1 = 0;
 
-
     for (i, val) in list1.iter().enumerate() {
         let diff = val - list2[i];
         sum1 += diff.abs();
