@@ -1,6 +1,6 @@
+use regex::Regex;
 use std::fs::File;
 use std::io::{BufRead, BufReader};
-use regex::Regex;
 
 pub fn run() -> (i32, i32) {
     let line = parse_input();
@@ -13,7 +13,7 @@ pub fn run() -> (i32, i32) {
 
 fn parse_input() -> String {
     let file = File::open("./input/input03.txt").unwrap();
-    let reader= BufReader::new(file);
+    let reader = BufReader::new(file);
     let mut output: String = "".to_string();
 
     for line in reader.lines() {
@@ -39,9 +39,6 @@ fn extract_dos_and_donts(input: &str) -> String {
     let output = re.replace_all(input, "").to_string();
     output
 }
-
-
-
 
 #[cfg(test)]
 mod tests {
@@ -73,7 +70,9 @@ mod tests {
 
     #[test]
     fn dos_and_donts() {
-        let result = extract_dos_and_donts("xmul(2,4)&mul[3,7]!^don't()_mul(5,5)+mul(32,64](mul(11,8)undo()?mul(8,5))");
+        let result = extract_dos_and_donts(
+            "xmul(2,4)&mul[3,7]!^don't()_mul(5,5)+mul(32,64](mul(11,8)undo()?mul(8,5))",
+        );
         assert_eq!(result, "xmul(2,4)&mul[3,7]!^?mul(8,5))");
     }
 }
